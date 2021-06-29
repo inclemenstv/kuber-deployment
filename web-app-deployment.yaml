@@ -15,9 +15,12 @@ spec:
       labels:
         app: backend
     spec:
+      imagePullSecrets:
+        - name: registry-secret
       containers:
         - name: backend
-          image: inclemenstv/backend:1
+          image: 192.168.20.10:5000/backend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
           env:
@@ -46,9 +49,12 @@ spec:
       labels:
         app: frontend
     spec:
+      imagePullSecrets:
+        - name: registry-secret
       containers:
         - name: frontend
-          image: inclemenstv/frontend:1
+          image: 192.168.20.10:5000/frontend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
 
